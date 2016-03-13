@@ -1,7 +1,6 @@
 package eve_nav.main;
 
 import eve_nav.model.Route;
-import eve_nav.model.Search;
 import org.apache.commons.dbutils.DbUtils;
 
 import java.sql.Connection;
