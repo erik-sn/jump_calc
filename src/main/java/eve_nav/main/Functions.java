@@ -10,6 +10,11 @@ import java.util.List;
 
 public class Functions {
 
+    /**
+     * Return a List of routes where origin and destination are solar system type IDs. Each route represents
+     * a star gate in the eve universe
+     * @return
+     */
     public List<Route> getJumpConnections() {
         Connection conn = getUniverseConnection();
         PreparedStatement pstmt = null;
@@ -34,6 +39,12 @@ public class Functions {
         return jumpConnections;
     }
 
+    /**
+     * Find a list of all solar systems that neighbor the origin system
+     * @param origin - solar system type ID
+     * @param jumpConnections - list of solar system type IDs that have a connecting stargate to the origin
+     * @return list of solar system type IDs
+     */
     public List<Integer> getNeighbors(int origin, List<Route> jumpConnections) {
         List<Integer> connections = new ArrayList<>();
         for(Route route: jumpConnections) {
@@ -44,7 +55,12 @@ public class Functions {
         return connections;
     }
 
-    public List<Integer> getKspaceSystems(Connection conn) {
+    /**
+     * Find all K-Space solar systems that are NOT in Jove space
+     * @return list of solar system type IDs
+     */
+    public List<Integer> getKspaceSystems() {
+        Connection conn = getUniverseConnection();
         PreparedStatement pstmt = null;
         List<Integer> systems = new ArrayList<>();
         ResultSet rs = null;
@@ -65,6 +81,10 @@ public class Functions {
         return systems;
     }
 
+    /**
+     * Get a connection object to the static sqllite database
+     * @return SQL Connection
+     */
     public Connection getUniverseConnection() {
         Connection conn = null;
         try {
@@ -78,6 +98,10 @@ public class Functions {
         return conn;
     }
 
+    /**
+     * Get a connection object to the postgres database
+     * @return SQL connection
+     */
     public Connection getPostgresConnection() {
         Connection conn = null;
         try {
