@@ -1,4 +1,13 @@
 *.class
+# Directories #
+target/
+out/
+.idea/
+src/main/java/eve_nav/info
+
+#Files #
+universeDataDx.db
+jumps.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
